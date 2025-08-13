@@ -1,24 +1,34 @@
+// GLOBAL VARIABLES
 let friends = [];
 const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
 
+// HTML ELEMENTS
 const input = document.getElementById("amigo");
 const buttonAdd = document.querySelector(".button-add")
 const friendsList = document.getElementById("listaAmigos");
 const buttonDraw = document.querySelector(".button-draw");
 const randomFriendList = document.getElementById("resultado");
 
+// CODE
 const render = () => {
     const name = input.value;
+    const alreadyExists = isDuplicated(name);
     const isValidInput = validateInput(name);
 
-    if (isValidInput) {
+    if (alreadyExists) {
+        alert("Esse amigo já está na lista.");
+    }
+    else if (isValidInput) {
         friends.push(name);
         updateFriendsList();
         input.focus();
-    } else {
+    }
+    else {
         alert("Por favor, insira um nome válido.");
     }
 }
+
+const isDuplicated = name => friends.includes(name);
 
 const validateInput = name => regex.test(name);
 
@@ -45,8 +55,9 @@ const renderRandomFriend = () => {
 
 const random = size => Math.floor(Math.random() * friends.length);
 
+// EVENT LISTENERS
 input.addEventListener("keydown", event => {
-    if(event.key === "Enter"){
+    if (event.key === "Enter") {
         render();
     }
 })
