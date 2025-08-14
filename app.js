@@ -34,7 +34,7 @@ const validateInput = name => regex.test(name);
 
 const updateFriendsList = () => {
     clearFriendList();
-    friends.forEach((friend, index) => friendsList.innerHTML += `<li id="friend-${index}"><span>${friend}</span></li>`);
+    friends.forEach((friend) => friendsList.innerHTML += `<li id="${friend}"><span>${friend}</span></li>`);
 }
 
 const clearFriendList = () => {
@@ -45,8 +45,14 @@ const clearFriendList = () => {
 const renderRandomFriend = () => {
     if (friends.length > 0) {
         const indexRandomFriend = random(friends.length);
-        let randomFriend = document.getElementById(`friend-${indexRandomFriend}`);
+        let randomFriend = document.getElementById(`${friends[indexRandomFriend]}`);
         randomFriendList.innerHTML = `<li><span>${randomFriend.textContent}</span></li>`;
+        friendsList.removeChild(randomFriend);
+        friends.splice(indexRandomFriend, 1);
+        input.focus();
+        if (!friends.length) {
+            randomFriendList.innerHTML = "";
+        }
     } else {
         alert("Você deve adicionar pelo menos um amigo.")
     }
@@ -63,3 +69,7 @@ input.addEventListener("keydown", event => {
 })
 buttonAdd.addEventListener("click", render);
 buttonDraw.addEventListener("click", renderRandomFriend);
+
+// console.log(friends);
+// friends.splice(1,1);
+// console.log(friends);
