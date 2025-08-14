@@ -1,4 +1,3 @@
----
 # Sorteador de Amigo Secreto
 
 Um simples e interativo sorteador de nomes para você usar no seu amigo secreto, jogos ou qualquer ocasião que precise de uma escolha aleatória! Adicione a lista de nomes e deixe a aplicação fazer o trabalho pesado.
@@ -23,11 +22,8 @@ Um simples e interativo sorteador de nomes para você usar no seu amigo secreto,
 2.  **Verificar a Lista:**
     * Confira se todos os nomes foram adicionados corretamente na lista exibida abaixo.
 3.  **Realizar o Sorteio:**
-    * Quando a lista estiver completa, clique no botão **"Sortear Amigo"**.
-    * O nome do amigo sorteado será exibido na tela, pronto para você revelar o resultado!
-Um simples e interativo sorteador de nomes para você usar no seu amigo secreto, jogos ou qualquer ocasião que precise de uma escolha aleatória! Adicione a lista de nomes e deixe a aplicação fazer o trabalho pesado.
-
----
+    * Quando a lista leta, clique no botão **"Sortear Amigo"**.
+    * O nome do amigo
 
 ## 🚀 Funcionalidades
 
