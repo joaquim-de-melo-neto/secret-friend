@@ -11,14 +11,14 @@ const randomFriendList = document.getElementById("resultado");
 
 // CODE
 const render = () => {
-    const name = input.value;
+    const name = input.value.trim();
     const alreadyExists = isDuplicated(name);
-    const isValidInput = validateInput(name);
+    const isValidName = validate(name);
 
     if (alreadyExists) {
         alert("Esse amigo já está na lista.");
     }
-    else if (isValidInput) {
+    else if (isValidName) {
         friends.push(name);
         updateFriendsList();
         input.focus();
@@ -30,11 +30,11 @@ const render = () => {
 
 const isDuplicated = name => friends.includes(name);
 
-const validateInput = name => regex.test(name);
+const validate = name => regex.test(name);
 
 const updateFriendsList = () => {
     clearFriendList();
-    friends.forEach((friend) => friendsList.innerHTML += `<li id="${friend}"><span>${friend}</span></li>`);
+    friends.forEach((friend) => friendsList.innerHTML += `<li><span>${friend}</span></li>`);
 }
 
 const clearFriendList = () => {
@@ -45,14 +45,11 @@ const clearFriendList = () => {
 const renderRandomFriend = () => {
     if (friends.length > 0) {
         const indexRandomFriend = random(friends.length);
-        let randomFriend = document.getElementById(`${friends[indexRandomFriend]}`);
-        randomFriendList.innerHTML = `<li><span>${randomFriend.textContent}</span></li>`;
-        friendsList.removeChild(randomFriend);
+        randomFriendList.innerHTML = `<li><span>${friends[indexRandomFriend]}</span></li>`;
         friends.splice(indexRandomFriend, 1);
-        input.focus();
-        if (!friends.length) {
-            randomFriendList.innerHTML = "";
-        }
+        updateFriendsList();
+
+        buttonDraw.focus();
     } else {
         alert("Você deve adicionar pelo menos um amigo.")
     }
@@ -69,7 +66,3 @@ input.addEventListener("keydown", event => {
 })
 buttonAdd.addEventListener("click", render);
 buttonDraw.addEventListener("click", renderRandomFriend);
-
-// console.log(friends);
-// friends.splice(1,1);
-// console.log(friends);
