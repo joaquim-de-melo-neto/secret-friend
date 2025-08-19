@@ -12,8 +12,8 @@ const randomFriendList = document.getElementById("resultado");
 // CODE
 const render = () => {
     const name = input.value.trim();
-    const alreadyExists = isDuplicated(name);
-    const isValidName = validate(name);
+    const alreadyExists = isDuplicatedFriend(name);
+    const isValidName = validateInput(name);
 
     if (alreadyExists) {
         alert("Esse amigo já está na lista.");
@@ -28,9 +28,9 @@ const render = () => {
     }
 }
 
-const isDuplicated = name => friends.includes(name);
+const isDuplicatedFriend = name => friends.includes(name);
 
-const validate = name => regex.test(name);
+const validateInput = name => regex.test(name);
 
 const updateFriendsList = () => {
     clearFriendList();
