@@ -160,3 +160,10 @@ ul {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+@media (width <= 412px) {
+  /* Seus estilos CSS para telas menores ou iguais a 412px */
+  header img {
+    display: none;
+  }
+}
