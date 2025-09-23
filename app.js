@@ -43,7 +43,7 @@ const renderRandomFriend = () => {
         const indexRandomFriend = random(friends.length);
         randomFriendList.innerHTML = `<li><span>${friends[indexRandomFriend]}</span></li>`;
         friends.splice(indexRandomFriend, 1);
-        clearFriendList()
+        clearFriendList();
         updateFriendsList();
 
         buttonDraw.focus();
@@ -61,5 +61,6 @@ input.addEventListener("keydown", event => {
         render();
     }
 })
+
 buttonAdd.addEventListener("click", render);
 buttonDraw.addEventListener("click", renderRandomFriend);
