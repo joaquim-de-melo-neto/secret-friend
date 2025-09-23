@@ -20,7 +20,9 @@ const render = () => {
     }
     else if (isValidName) {
         friends.push(name);
+        clearFriendList();
         updateFriendsList();
+        input.value = "";
         input.focus();
     }
     else {
@@ -32,15 +34,9 @@ const isDuplicatedFriend = name => friends.includes(name);
 
 const validateInput = name => regex.test(name);
 
-const updateFriendsList = () => {
-    clearFriendList();
-    friends.forEach((friend) => friendsList.innerHTML += `<li><span>${friend}</span></li>`);
-}
+const clearFriendList = () => friendsList.innerHTML = "";
 
-const clearFriendList = () => {
-    input.value = "";
-    friendsList.innerHTML = "";
-};
+const updateFriendsList = () => friends.forEach( friend => friendsList.innerHTML += `<li><span>${friend}</span></li>` );
 
 const renderRandomFriend = () => {
     if (friends.length > 0) {
